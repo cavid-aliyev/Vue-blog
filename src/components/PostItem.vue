@@ -5,17 +5,13 @@
       <div><strong>Descr: </strong>{{ post.body }}</div>
     </div>
     <div class="post__btns">
-      <CustomButton>Delete</CustomButton>
+      <CustomButton @click="$emit('remove', post)">Delete</CustomButton>
     </div>
   </div>
 </template>
 
 <script>
-import CustomButton from "./UI/CustomButton.vue";
 export default {
-  components: {
-    CustomButton,
-  },
   props: {
     post: {
       type: Object,

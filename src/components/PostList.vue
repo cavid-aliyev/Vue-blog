@@ -1,15 +1,21 @@
 <template>
-  <div>
+  <div v-if="posts.length > 0">
     <h3>Post Lists:</h3>
-    <Post v-for="post in posts" :key="post" :post="post" />
+    <PostItem
+      @remove="$emit('remove', post)"
+      v-for="post in posts"
+      :key="post"
+      :post="post"
+    />
   </div>
+  <h2 v-else style="color: red">Empty List</h2>
 </template>
 
 <script>
-import Post from "./PostItem.vue";
+import PostItem from "./PostItem.vue";
 export default {
   components: {
-    Post,
+    PostItem,
   },
   props: {
     posts: {

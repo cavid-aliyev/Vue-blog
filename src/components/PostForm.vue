@@ -1,19 +1,17 @@
 <template>
   <form @submit.prevent>
-    <input v-model="post.title" class="input" type="text" placeholder="title" />
-    <input v-model="post.body" class="input" type="text" placeholder="text" />
+    <Input v-model="post.title" placeholder="title" :type="'text'" />
+    <Input v-model="post.body" placeholder="text" :type="'text'" />
     <!-- <button @click="createPost" class="btn">Create</button> -->
     <!-- All attributes would be sent to button component -->
-    <CustomButton class="button-create">Create</CustomButton>
+    <CustomButton @click="createPost" class="button-create"
+      >Create</CustomButton
+    >
   </form>
 </template>
 
 <script>
-import CustomButton from "./UI/CustomButton";
 export default {
-  components: {
-    CustomButton,
-  },
   data() {
     return {
       post: {
@@ -40,12 +38,6 @@ export default {
 form {
   display: flex;
   flex-direction: column;
-}
-.input {
-  width: 100%;
-  border: 1px solid teal;
-  padding: 10px 15px;
-  margin-top: 15px;
 }
 
 .button-create {

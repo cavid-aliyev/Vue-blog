@@ -1,7 +1,12 @@
 <template>
   <div>
     <h1>Post Page</h1>
-    <Input :type="'text'" v-model="searchQuery" placeholder="Search..." />
+    <Input
+      v-focus
+      :type="'text'"
+      v-model="searchQuery"
+      placeholder="Search..."
+    />
     <div class="app_btns">
       <CustomButton @click="showModal">Create post</CustomButton>
       <PostSelect v-model="selectedSort" :options="sortOptions" />
@@ -17,7 +22,7 @@
       v-if="!isPostsLoading"
     />
     <h2 v-else>Loading</h2>
-    <div ref="observer" class="observer"></div>
+    <div v-intersection="loadMorePosts" class="observer"></div>
     <!-- Pagination -->
     <!-- <div class="page__wrapper">
       <div
@@ -121,17 +126,17 @@ export default {
   },
   mounted() {
     this.fetchPosts();
-    const options = {
-      rootMargin: "0px",
-      threshold: 1.0,
-    };
-    const callback = (entries, observer) => {
-      if (entries[0].isIntersecting && this.posts < this.totalPages) {
-        this.loadMorePosts();
-      }
-    };
-    const observer = new IntersectionObserver(callback, options);
-    observer.observe(this.$refs.observer);
+    // const options = {
+    //   rootMargin: "0px",
+    //   threshold: 1.0,
+    // };
+    // const callback = (entries, observer) => {
+    //   if (entries[0].isIntersecting && this.posts < this.totalPages) {
+    //     this.loadMorePosts();
+    //   }
+    // };
+    // const observer = new IntersectionObserver(callback, options);
+    // observer.observe(this.$refs.observer);
   },
   computed: {
     sortedPosts() {

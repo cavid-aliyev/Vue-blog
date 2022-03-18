@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent>
     <h3>Create Post</h3>
-    <Input v-model="post.title" placeholder="title" :type="'text'" />
+    <Input v-focus v-model="post.title" placeholder="title" :type="'text'" />
     <Input v-model="post.body" placeholder="text" :type="'text'" />
     <!-- <button @click="createPost" class="btn">Create</button> -->
     <!-- All attributes would be sent to button component -->

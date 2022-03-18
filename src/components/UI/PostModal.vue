@@ -7,20 +7,10 @@
 </template>
 
 <script>
+import toggleMixin from "../../mixins/toggleMixin";
 export default {
   name: "PostModal",
-  props: {
-    show: {
-      type: Boolean,
-      default: false,
-    },
-  },
-
-  methods: {
-    hideModal() {
-      this.$emit("update:show", false);
-    },
-  },
+  mixins: [toggleMixin],
 };
 </script>
 
